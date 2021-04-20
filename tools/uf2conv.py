@@ -222,7 +222,10 @@ def convert_from_hex_to_uf2(buf):
     return resfile
 
 def to_str(b):
-    return b.decode("utf-8")
+    if sys.platform == "win32":
+        return b.decode("gbk")
+    else:
+        return b.decode("utf-8")
 
 def get_drives():
     drives = []
